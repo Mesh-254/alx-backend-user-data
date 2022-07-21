@@ -3,6 +3,8 @@
 re sub for personal data
 """
 import logging
+from os import environ
+import mysql.connector
 import re
 from typing import List
 
@@ -34,6 +36,20 @@ def get_logger() -> logging.Logger:
     stream_handler.setFormatter(RedactingFormatter(list(PII_FIELDS)))
     logger.addHandler(stream_handler)
     return logger
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ Returns a connector to a MySQL database """
+    username = environ.get("PERSONAL_DATA_DB_USERNAME", "root")
+    password = environ.get("PERSONAL_DATA_DB_PASSWORD", "")
+    host = environ.get("PERSONAL_DATA_DB_HOST", "localhost")
+    db_name = environ.get("PERSONAL_DATA_DB_NAME")
+
+    connection_args = mysql.connector.connection.MySQLConnection(user=username,
+                                                     password=password,
+                                                     host=host,
+                                                     database=db_name)
+    return connection_args
+
 
 
 class RedactingFormatter(logging.Formatter):
