@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+"""file to encrypt password"""
 import bcrypt
 
 
