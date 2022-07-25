@@ -15,7 +15,6 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 auth = None
 
 
-
 @app.errorhandler(404)
 def not_found(error) -> str:
     """ Not found handler
