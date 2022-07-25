@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """python class Auth"""
-import re
-from typing import TypeVar
-from flask import List
+from typing import List, TypeVar
+from flask import request
+
 
 
 class Auth:
