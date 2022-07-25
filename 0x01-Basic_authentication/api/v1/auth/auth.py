@@ -4,10 +4,8 @@ from typing import List, TypeVar
 from flask import request
 
 
-
 class Auth:
     """class Auth"""
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """public method require authentication"""
         if path is None:
