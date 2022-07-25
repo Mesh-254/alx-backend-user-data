@@ -2,8 +2,7 @@
 """python class Auth"""
 import re
 from typing import TypeVar
-from flask import request, List
-import requests
+from flask import List
 
 
 class Auth:
@@ -19,7 +18,7 @@ class Auth:
             return False
         if path == "/api/v1/status/" and excluded_paths == ["/api/v1/status/"]:
             return False
-        return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """public method
