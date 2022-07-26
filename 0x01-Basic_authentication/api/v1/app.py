@@ -21,6 +21,7 @@ else:
     from api.v1.auth.auth import Auth
     auth = Auth()
 
+
 def before_request():
     """
     Before request
@@ -28,8 +29,8 @@ def before_request():
     if auth is not None:
         return
     if request.path != ['/api/v1/status/', '/api/v1/unauthorized/',
-     '/api/v1/forbidden/']:
-        return 
+                        '/api/v1/forbidden/']:
+        return
         auth.current_user(request)
 
 
