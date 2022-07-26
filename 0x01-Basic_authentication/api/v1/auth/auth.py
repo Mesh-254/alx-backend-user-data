@@ -15,7 +15,11 @@ class Auth:
             return True
         if path in excluded_paths:
             return False
-        return False
+        #this method must be slash tolerant (/) or not (not/) slash at the end of the path 
+        if path[-1] == "/" or path[-1] == "not/":
+            if excluded_paths[-1] == "/":
+                return False
+        
 
     def authorization_header(self, request=None) -> str:
         """public method
