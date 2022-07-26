@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """ 6. Basic auth"""
 import base64
+import email
+
+from click import password_option
 from api.v1.auth.auth import Auth
 
 
@@ -42,3 +45,15 @@ class BasicAuth(Auth):
                 return None
 
         return base64_authorization_header.decode('utf-8')
+
+    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> (str, str):
+        """extract user credentials"""
+        if decoded_base64_authorization_header is None:
+            return None
+        if type(decoded_base64_authorization_header) != str:
+            return None
+
+        if decoded_base64_authorization_header.__contains__(':'):
+            return None
+
+        return decoded_base64_authorization_header[email, password_option].split(':')
