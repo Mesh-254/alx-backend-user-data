@@ -23,11 +23,11 @@ class BasicAuth(Auth):
 
         return authorization_header.split(' ')[-1]
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header:
+                                           str) -> str:
         """
-        Decodes the Base64 part of the Authorization header
-        :param base64_authorization_header: the Base64 part of the Authorization header
-        :return: the decoded Base64 part of the Authorization header
+        return: the decoded Base64 part of the Authorization header
         """
         if base64_authorization_header is None:
             return None
@@ -36,7 +36,8 @@ class BasicAuth(Auth):
         if base64_authorization_header != base64_authorization_header.encode():
 
             try:
-                return base64.b64decode(base64_authorization_header).decode('utf-8')
+                return base64.b64decode(
+                    base64_authorization_header).decode('utf-8')
             except:
                 return None
 
