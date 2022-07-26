@@ -15,8 +15,7 @@ class Auth:
             return True
         if path in excluded_paths:
             return False
-        if path == "/api/v1/status/" and excluded_paths == ["/api/v1/status/"]:
-            return False
+        return False
 
     def authorization_header(self, request=None) -> str:
         """public method
