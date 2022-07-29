@@ -63,7 +63,7 @@ def before_request() -> str:
     if current_user is None:
         abort(403)
 
-    request.current_user =  current_user
+    request.current_user = current_user
 
 
 @app.errorhandler(404)
